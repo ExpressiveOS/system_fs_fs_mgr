@@ -497,7 +497,7 @@ int ReadWorker::ReadUnalignedSector(
         size_t write_sz = std::min(size, buffer_size - skip_offset);
 
         auto buffer =
-                reinterpret_cast<uint8_t*>(block_server_->GetResponseBuffer(BLOCK_SZ, write_sz));
+                reinterpret_cast<uint8_t*>(block_server_->GetResponseBuffer(write_sz, write_sz));
         if (!buffer) {
             SNAP_LOG(ERROR) << "ReadUnalignedSector failed to allocate buffer";
             return -1;
